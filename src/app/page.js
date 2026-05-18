@@ -1,5 +1,6 @@
 import Banner from "@/components/home/Banner";
 import HowItWorks from "@/components/home/HowItWorks";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
 
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <div>
       <Banner />
       <HowItWorks />
+      <WhyChooseUs />
     </div>
   );
 }
