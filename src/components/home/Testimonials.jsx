@@ -62,7 +62,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="bg-white py-24 relative overflow-hidden">
+    <section className="bg-white py-20 relative overflow-hidden">
       
       {/* Background Subtle Theme Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-150 h-75 bg-indigo-50/50 rounded-full blur-[100px] pointer-events-none"></div>
@@ -111,7 +111,7 @@ const Testimonials = () => {
             {reviews.map((testimonial) => (
               <SwiperSlide key={testimonial.id} className="h-auto">
                 {/* Review Card -  */}
-                <div className="bg-[#FBFAFF] p-8 rounded border border-indigo-50 shadow-lg shadow-slate-200/40 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 h-full flex flex-col relative z-10 group">
+                <div className="bg-[#FBFAFF] p-8 rounded-2xl border border-indigo-50 shadow-lg shadow-slate-200/40 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 h-full flex flex-col relative z-10 group">
                   
                   
                   <FaQuoteRight className="absolute top-8 right-8 text-7xl text-indigo-50 -z-10 group-hover:text-indigo-100 transition-colors duration-300" />
