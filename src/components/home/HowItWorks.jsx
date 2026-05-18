@@ -24,7 +24,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="bg-slate-100 py-20 sm:py-24 overflow-hidden">
+    <section className="bg-slate-100 py-20 sm:py-20 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         
         {/* Header */}
