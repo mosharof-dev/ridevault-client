@@ -29,41 +29,46 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <NavBer />
         {/* container mx-auto px-4 sm:px-6 lg:px-8 */}
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
-         <Toaster
+        <Toaster
           position="top-right"
           reverseOrder={false}
           toastOptions={{
-            
-            duration: 3000,
+            duration: 4000,
             style: {
-              background: '#333',
-              color: '#fff',
-              borderRadius: '8px',
-              padding: '16px',
+              background: "#ffffff",
+              color: "#1e293b", // slate-800
+              fontWeight: "600",
+              fontSize: "14px",
+              padding: "16px 20px",
+              borderRadius: "16px",
+              boxShadow:
+                "0 10px 25px -5px rgba(67, 56, 202, 0.15), 0 8px 10px -6px rgba(67, 56, 202, 0.1)",
+              border: "1px solid #f8fafc",
+              fontFamily: "inherit",
             },
-            
             success: {
-              duration: 2000,
               iconTheme: {
-                primary: '#4ade80', 
-                secondary: '#fff',
+                primary: "#14B8A6",
+                secondary: "#ffffff",
+              },
+              style: {
+                borderLeft: "4px solid #14B8A6",
               },
             },
-            
             error: {
-              duration: 3000,
               iconTheme: {
-                primary: '#ef4444', 
-                secondary: '#fff',
+                primary: "#EF4444",
+                secondary: "#ffffff",
+              },
+              style: {
+                borderLeft: "4px solid #EF4444",
               },
             },
           }}
         />
-        </body>
+      </body>
     </html>
   );
 }
