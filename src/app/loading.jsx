@@ -5,7 +5,7 @@ import { BiCompass } from "react-icons/bi";
 
 const Loading = () => {
   return (
-    <div className="fixed inset-0 z-[9999] flex min-h-screen w-full flex-col items-center justify-center bg-white">
+    <div className="fixed inset-0 z-9999 flex min-h-screen w-full flex-col items-center justify-center bg-white">
       <div className="relative flex items-center justify-center">
         
         {/* Outer Rotating Ring - Tailwind animation */}
