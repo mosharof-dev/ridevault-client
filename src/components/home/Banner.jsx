@@ -69,7 +69,7 @@ const Banner = () => {
                 href="/explore-cars" 
                 className="flex items-center justify-center gap-2 px-8 py-4 w-full sm:w-auto rounded-full text-slate-700 font-bold text-base bg-white border border-slate-200 hover:bg-slate-50 transition-all duration-300 hover:shadow-sm"
               >
-                View Fleet
+                Explore Cars
               </Link>
             </div>
 

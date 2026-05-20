@@ -14,11 +14,14 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "react-hot-toast";
 import { RiDeleteBin5Line, RiSaveLine } from "react-icons/ri";
 import Loading from "../loading";
+import { useRouter } from "next/navigation";
+
+
 
 const AddCarPage = () => {
   const [loading, setLoading] = useState(false);
   const { data: session, isPending } = authClient.useSession();
-
+const router = useRouter();
   if (isPending) {
     return (
       <>
@@ -27,7 +30,8 @@ const AddCarPage = () => {
     );
   }
 
-  const onSubmit = async (event) => {
+  
+const onSubmit = async (event) => {
     event.preventDefault();
 
     if (!session?.user?.email) {
@@ -49,13 +53,53 @@ const AddCarPage = () => {
       addedByEmail: session.user.email,
     };
 
-    console.log("🟢 Submit Data Object:", carData);
+    try {
+      
+      const tokenResponse = await authClient.token(); 
+      console.log("Token Response Data:", tokenResponse); 
 
-    setTimeout(() => {
+      
+      const actualToken = tokenResponse?.data?.token || tokenResponse?.token;
+
+      console.log(actualToken, "token");
+      if (!actualToken) {
+        console.error("No valid token found!");
+        toast.error("Authentication error. Please login again.");
+        setLoading(false);
+        return; 
+      }
+
+      console.log("Submit Data Object:", carData);
+
+      // 3. API Call (Capital 'Authorization' use)
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/car`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "authorization": `Bearer ${actualToken}`, 
+        },
+        body: JSON.stringify(carData),
+      });
+
+      const result = await res.json();
+      console.log("Backend Response:", result);
+
+      if (!res.ok) {
+        toast.error(result.message || "Failed to add car");
+        setLoading(false);
+        return;
+      }
+
       setLoading(false);
       toast.success("Vehicle successfully added to fleet!");
-      event.target.reset();
-    }, 1500);
+      
+     router.push("/explore-cars");
+
+    } catch (error) {
+      console.error("Submit Error:", error);
+      toast.error("Something went wrong!");
+      setLoading(false);
+    }
   };
 
   const inputStyles =
