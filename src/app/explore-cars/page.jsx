@@ -81,7 +81,7 @@ const ExploreCarPage = () => {
   return (
     <div className="min-h-screen bg-slate-50/50 pb-20 font-sans">
       
-      {/* 🚀 Header Banner */}
+      {/*  Header Banner */}
       <div className="bg-linear-to-r from-indigo-600 to-teal-500 py-16 px-4 md:py-20 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -96,79 +96,85 @@ const ExploreCarPage = () => {
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         
-        {/* 🛠️ Filters & Controls Bar */}
-        <div className="p-4 md:p-6 mb-8 border border-slate-100 shadow-xl shadow-slate-200/30 rounded-2xl bg-white">
-          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
-            
-            {/* Search Input */}
-            <div className="w-full lg:max-w-sm relative flex items-center">
-              <div className="absolute left-4 text-slate-400">
-                <HiOutlineSearch className="text-xl" />
-              </div>
-              <input
-                type="text"
-                placeholder="Search by car model..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full h-12 pl-11 pr-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl transition-all focus:bg-white focus:border-indigo-600 focus:outline-none text-slate-700 font-medium"
-              />
-            </div>
+        {/*  Filters & Controls Bar */}
+       <div className="p-4 sm:p-5 md:p-6 mb-8 border border-slate-100 shadow-xl shadow-slate-200/30 rounded-2xl bg-white w-full max-w-full overflow-hidden">
+  {/*  Core Stack Master: Adaptive Flexible Controller Layout */}
+  <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between w-full">
+    
+    {/*  Row 1: Search Component Block */}
+    <div className="w-full lg:max-w-sm relative flex items-center shrink-0">
+      <div className="absolute left-4 text-slate-400 pointer-events-none">
+        <HiOutlineSearch className="text-xl" />
+      </div>
+      <input
+        type="text"
+        placeholder="Search by car model..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full h-12 pl-11 pr-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl transition-all focus:bg-white focus:border-indigo-600 focus:outline-none text-slate-700 font-medium text-sm"
+      />
+    </div>
 
-            {/* Category Buttons */}
-            <div className="w-full overflow-x-auto flex gap-2 py-1 scrollbar-none justify-start lg:justify-center">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setCategory(cat)}
-                  className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all whitespace-nowrap cursor-pointer
-                    ${category === cat 
-                      ? "bg-indigo-600 text-white shadow-md shadow-indigo-200" 
-                      : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60"
-                    }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+    {/*  Row 2: Premium Wrapped Filter Grid  */}
+    <div className="w-full lg:flex-1 lg:max-w-xl">
+      <div className="flex flex-wrap lg:flex-nowrap items-center gap-2 w-full justify-start lg:justify-center">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setCategory(cat)}
+            className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all whitespace-nowrap cursor-pointer shrink-0
+              ${category === cat 
+                ? "bg-indigo-600 text-white shadow-md shadow-indigo-200" 
+                : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60"
+              }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
 
-            {/* Sort & Grid Toggle Controls */}
-            <div className="w-full lg:w-auto flex items-center justify-end gap-3 self-end lg:self-center">
-              
-              {/* Sort By Select */}
-              <div className="relative w-40">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full h-12 appearance-none rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 focus:bg-white focus:border-indigo-600 outline-none transition-all px-4 text-sm font-medium text-slate-700 cursor-pointer shadow-sm pr-10"
-                >
-                  <option value="default">Default Sorting</option>
-                  <option value="price_asc">Price: Low to High</option>
-                  <option value="price_desc">Price: High to Low</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-                  <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-                </div>
-              </div>
-
-              {/* Grid / List View Toggle */}
-              <div className="flex bg-slate-100 p-1.5 rounded-xl border border-slate-200/40">
-                <button
-                  onClick={() => setViewType("grid")}
-                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewType === "grid" ? "bg-white text-indigo-600 shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
-                >
-                  <HiOutlineViewGrid className="text-xl" />
-                </button>
-                <button
-                  onClick={() => setViewType("list")}
-                  className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewType === "list" ? "bg-white text-indigo-600 shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
-                >
-                  <HiOutlineViewList className="text-xl" />
-                </button>
-              </div>
-            </div>
-
-          </div>
+    {/*  Row 3: Action System Controls Segment */}
+    <div className="w-full lg:w-auto flex items-center justify-between gap-3 pt-3 lg:pt-0 border-t border-slate-100 lg:border-t-0 shrink-0">
+      
+      {/* Price / Sorting Dropdown Selector */}
+      <div className="relative flex-1 lg:flex-initial lg:w-44">
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="w-full h-12 appearance-none rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200/80 focus:bg-white focus:border-indigo-600 outline-none transition-all px-4 text-sm font-medium text-slate-700 cursor-pointer shadow-sm pr-10"
+        >
+          <option value="default">Default Sorting</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+        </select>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+          <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
         </div>
+      </div>
+
+      {/* Grid Layout Switcher Button Panel */}
+      <div className="flex bg-slate-100 p-1.5 rounded-xl border border-slate-200/40 shrink-0">
+        <button
+          onClick={() => setViewType("grid")}
+          className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewType === "grid" ? "bg-white text-indigo-600 shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
+        >
+          <HiOutlineViewGrid className="text-xl" />
+        </button>
+        <button
+          onClick={() => setViewType("list")}
+          className={`p-1.5 rounded-lg transition-all cursor-pointer ${viewType === "list" ? "bg-white text-indigo-600 shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
+        >
+          <HiOutlineViewList className="text-xl" />
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
 
         {/* Cars Display Section */}
         {loading ? (
