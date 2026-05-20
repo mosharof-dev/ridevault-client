@@ -161,17 +161,19 @@ const onSubmit = async (event) => {
                 <FieldError className="text-red-500 text-xs font-bold mt-1" />
               </TextField>
 
-              {/* Registration Number */}
+              {/* Seat Capacity */}
               <TextField
-                name="vehicleRegistrationNumber"
+                name="seatCapacity"
+                type="number"
                 isRequired
                 className="flex flex-col gap-1.5"
               >
                 <Label className="text-[14px] font-bold text-slate-700">
-                  Registration Number
+                  Seat Capacity
                 </Label>
                 <Input
-                  placeholder="Enter official vehicle registration number"
+                  type="number"
+                  placeholder="Enter the number of seats"
                   className={inputStyles}
                 />
                 <FieldError className="text-red-500 text-xs font-bold mt-1" />

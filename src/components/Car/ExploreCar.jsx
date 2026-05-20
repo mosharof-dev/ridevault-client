@@ -94,10 +94,12 @@ const ExploreCar = ({ car, viewType, getCategoryColor }) => {
             </p>
           </div>
 
-          <Link href={`/car/${car._id}`}>
-            <button className="bg-linear-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 text-white font-extrabold rounded-xl px-5 lg:px-6 py-2.5 shadow-md shadow-indigo-100 active:scale-[0.98] transition-all whitespace-nowrap text-sm">
+          <Link href={`/explore-cars/${car._id}`}
+          className="bg-linear-to-r from-indigo-600 to-teal-500 hover:from-indigo-500 hover:to-teal-400 text-white font-extrabold rounded-xl px-5 lg:px-6 py-2.5 shadow-md shadow-indigo-100 active:scale-[0.98] transition-all whitespace-nowrap text-sm"
+        >
+            
               View Details
-            </button>
+           
           </Link>
         </div>
       </div>
