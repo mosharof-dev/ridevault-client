@@ -19,13 +19,16 @@ export default function MyCarsPage() {
         const tokenResponse = await authClient.token();
         const actualToken = tokenResponse?.data?.token || tokenResponse?.token;
 
-        const res = await fetch("http://localhost:5000/my-cars", {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${actualToken}`,
-            "Content-Type": "application/json",
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/my-cars`,
+          {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${actualToken}`,
+              "Content-Type": "application/json",
+            },
           },
-        });
+        );
 
         if (res.ok) {
           const data = await res.json();
@@ -34,8 +37,7 @@ export default function MyCarsPage() {
           toast.error("Please login to view your cars");
         }
       } catch (err) {
-        toast.error("Failed to fetch cars");
-        console.error("Fetch client fail:", err);
+        console.error("Failed to fetch cars:", err);
       } finally {
         setLoading(false);
       }
