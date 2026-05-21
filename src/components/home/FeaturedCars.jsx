@@ -17,30 +17,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Loading from "@/app/loading";
 
-const FeaturedCars = () => {
-  const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(true);
+const FeaturedCars = ({ initialCars = [] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const SERVER_URL =
-    process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:5000";
-
-  useEffect(() => {
-    const fetchFeaturedCars = async () => {
-      try {
-        const res = await fetch(`${SERVER_URL}/featuredCars`);
-        if (res.ok) {
-          const data = await res.json();
-          setCars(data);
-        }
-      } catch (error) {
-        console.error("Failed to fetch featured cars:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchFeaturedCars();
-  }, [SERVER_URL]);
+  // Directly use the server-fetched cars
+  const cars = initialCars;
 
   const getCategoryColor = (catName) => {
     const name = catName?.toLowerCase() || "";
@@ -50,14 +31,6 @@ const FeaturedCars = () => {
     if (name === "hatchback") return "bg-pink-500";
     return "bg-indigo-600";
   };
-
-  if (loading) {
-    return (
-      <>
-    <Loading />
-      </>
-    );
-  }
 
   if (cars.length === 0) return null;
 
@@ -84,7 +57,7 @@ const FeaturedCars = () => {
           </Link>
         </div>
 
-        {/* 🛞 Swiper Slider Component */}
+        {/*  Swiper Slider Component */}
         <div className="relative">
           <Swiper
             modules={[Navigation]}

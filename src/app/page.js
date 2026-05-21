@@ -6,13 +6,26 @@ import Testimonials from "@/components/home/Testimonials";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 
 
-export default function Home() {
+export default async function Home() {
+  let initialCars = [];
+  try {
+    // SSR Data Fetching with  Cache
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featuredCars`, {
+      next: { revalidate: 3600 } // Revalidate every hour
+    });
+    if (res.ok) {
+      initialCars = await res.json();
+    }
+  } catch (error) {
+    console.error("SSR Fetch Error:", error);
+  }
+
   return (
     <div>
       {/* Main Content */}
       <Banner />
       
-      <FeaturedCars />
+      <FeaturedCars initialCars={initialCars} />
       {/* How It Works */}
       <HowItWorks />
       {/* Why Choose Us */}
