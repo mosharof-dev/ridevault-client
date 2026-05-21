@@ -1,3 +1,4 @@
+import BookingModal from '@/components/Car/BookingModal';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -204,31 +205,14 @@ export default async function CarsDetailsPage({ params }) {
           </div>
 
           {/* Departure Configuration Component */}
-          <div className="space-y-2.5">
-            <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider">
-              <FaCalendarAlt className="text-blue-600" /> Select Departure Date <span className="text-rose-500">*</span>
-            </label>
-            <input 
-              type="date"
-              defaultValue="2026-05-20"
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 transition-all cursor-pointer"
-            />
-          </div>
+          
 
           {/* Call-to-Action Submit Handler Trigger Segment */}
           <div>
-            <button 
-              disabled={!car.availability}
-              className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-base tracking-wide transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0 ${
-                car.availability 
-                  ? "bg-linear-to-r from-blue-600 to-indigo-600 hover:bg-blue-700 text-white shadow-blue-600/10" 
-                  : "bg-slate-100 text-slate-400 cursor-not-allowed shadow-none border border-slate-200"
-              }`}
-            >
-              <span>{car.availability ? "Book This Ride Now →" : "Vehicle Currently Reserved"}</span>
-            </button>
+            
+            <BookingModal car={car} isAvailable={car.availability} dailyPrice={car.dailyRentalPrice} />
           </div>
-
+         
           {/* Direct Trust Features Checkpoints */}
           <div className="pt-5 border-t border-slate-100 space-y-3">
             {[
