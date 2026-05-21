@@ -6,6 +6,7 @@ import Image from "next/image";
 import { FaMapMarkerAlt, FaCar, FaPlus } from "react-icons/fa";
 import Loading from "../loading";
 import EditModal from "@/components/Car/EditModal";
+import Delete from "@/components/Car/Delete";
 
 export default function MyCarsPage() {
   const [myCars, setMyCars] = useState([]);
@@ -215,12 +216,7 @@ export default function MyCarsPage() {
                     <EditModal car={car} setMyCars={setMyCars} />
 
                     {/* Delete Button */}
-                    <button
-                      onClick={() => handleDeleteCar(car._id)}
-                      className="bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold text-sm py-2 px-4 rounded-lg transition-all border border-rose-100"
-                    >
-                      Delete
-                    </button>
+                    <Delete car={car} />
                   </div>
                 </div>
               </div>
