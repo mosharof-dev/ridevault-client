@@ -21,5 +21,5 @@ export async function proxy(request) {
 
 
 export const config = {
-  matcher: ["/my-added-cars",  "/add-car", "/my-bookings"],
+  matcher: ["/my-added-cars", "/explore-cars/:path",  "/add-car", "/my-bookings"],
 };

@@ -22,7 +22,7 @@ export default function MyCarsPage() {
         const res = await fetch("http://localhost:5000/my-cars", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${actualToken}`,
+            authorization: `Bearer ${actualToken}`,
             "Content-Type": "application/json",
           },
         });

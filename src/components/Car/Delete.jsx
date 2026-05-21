@@ -19,7 +19,7 @@ const Delete = ({ car }) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${actualToken}`,
+          authorization: `Bearer ${actualToken}`,
         },
       }
     );

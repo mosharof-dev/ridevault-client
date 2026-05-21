@@ -9,17 +9,30 @@ import { RiCalendarCheckLine, RiCloseLine } from "react-icons/ri";
 
 const BookingModal = ({ car, isAvailable, dailyPrice }) => {
   const [loading, setLoading] = useState(false);
-  const router = useRouter(); // Initialize Next.js router
+  const router = useRouter(); 
 
   // Auth Context Session Parsing
   const session = authClient.useSession?.() || {};
   const userEmail = session?.data?.user?.email;
+  const user = session?.data?.user;
 
   const inputStyles =
     "w-full h-12 rounded-xl bg-slate-50 border border-slate-200 px-4 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all shadow-sm text-[15px] outline-none text-slate-700";
 
+ const handleBookNowClick = () => {
+ 
+    if (!user) {
+      toast.error("Please login to book a car!");
+      router.push("/login"); 
+      return;
+    }
+
+     
+    console.log("Open Booking Modal");
+  };
+
   const handleBooking = async (e) => {
-    e.preventDefault();
+   e.preventDefault();
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
@@ -55,7 +68,7 @@ const BookingModal = ({ car, isAvailable, dailyPrice }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${actualToken}`,
+          authorization: `Bearer ${actualToken}`,
         },
         body: JSON.stringify(bookingPayload),
       });
@@ -81,11 +94,14 @@ if (!isAvailable) {
         Currently Reserved
       </Button>
     );
-  }
+  };
+ 
+  
   return (
     <Modal>
       {/* Trigger CTA */}
       <Button
+        onClick={handleBookNowClick}
         disabled={!isAvailable}
         className={`w-full py-6 rounded-xl font-bold text-lg transition-all shadow-md ${
           isAvailable

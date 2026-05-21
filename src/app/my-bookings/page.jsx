@@ -32,7 +32,7 @@ const MyBookingPage = () => {
           `${process.env.NEXT_PUBLIC_SERVER_URL}/booking?email=${userEmail}`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              authorization: `Bearer ${token}`,
             },
           }
         );
