@@ -121,7 +121,7 @@ const MyBookingPage = () => {
                 fill
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent"></div>
               
               {/* Badges on Image */}
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-indigo-700 text-xs font-black px-3 py-1.5 rounded-lg shadow-sm uppercase tracking-wider">

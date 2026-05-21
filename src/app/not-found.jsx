@@ -25,7 +25,7 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <h1 className="text-3xl md:text-4xl font-black text-slate-900 mt-[-20px] mb-4">
+          <h1 className="text-3xl md:text-4xl font-black text-slate-900 -mt-5 mb-4">
             Oops! Page not found
           </h1>
           <p className="text-slate-500 text-lg mb-10 max-w-md mx-auto">

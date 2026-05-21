@@ -7,6 +7,7 @@ import { FaMapMarkerAlt, FaCar, FaPlus } from "react-icons/fa";
 import Loading from "../loading";
 import EditModal from "@/components/Car/EditModal";
 import Delete from "@/components/Car/Delete";
+import toast from "react-hot-toast";
 
 export default function MyCarsPage() {
   const [myCars, setMyCars] = useState([]);
@@ -30,9 +31,10 @@ export default function MyCarsPage() {
           const data = await res.json();
           setMyCars(data);
         } else {
-          console.error("Backend server error status:", res.status);
+          toast.error("Please login to view your cars");
         }
       } catch (err) {
+        toast.error("Failed to fetch cars");
         console.error("Fetch client fail:", err);
       } finally {
         setLoading(false);

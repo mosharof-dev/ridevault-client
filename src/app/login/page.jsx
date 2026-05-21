@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { BiMap, BiHistory, BiCreditCard } from "react-icons/bi";
-import { useRouter } from "next/navigation";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -21,7 +21,7 @@ import { toast } from "react-hot-toast";
 import { FaArrowRight } from "react-icons/fa";
 
 const Login = () => {
-  const router = useRouter();
+ 
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,7 +48,7 @@ const Login = () => {
 
     if (data) {
       toast.success("Welcome back to RideVault! 🚗");
-      router.push("/"); 
+     window.location.href = "/";
     }
   };
 

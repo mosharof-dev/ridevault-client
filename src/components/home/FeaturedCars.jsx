@@ -15,6 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Loading from "@/app/loading";
 
 const FeaturedCars = () => {
   const [cars, setCars] = useState([]);
@@ -52,12 +53,9 @@ const FeaturedCars = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-24 gap-4 bg-white">
-        <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-slate-500 font-semibold animate-pulse">
-          Loading amazing fleet...
-        </p>
-      </div>
+      <>
+    <Loading />
+      </>
     );
   }
 

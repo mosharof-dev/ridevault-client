@@ -39,14 +39,14 @@ const NavBer = () => {
       </li>
       <li>
         <Link
-          href="/about"
+          href="/add-car"
           className={`px-1 py-1 transition-all ${
-            pathname === "/about"
+            pathname === "/add-car"
               ? "text-indigo-600 font-bold border-b-2 border-indigo-600 bg-transparent"
               : "text-slate-600 font-medium hover:text-indigo-600 hover:border-b-2 hover:border-indigo-300 bg-transparent"
           }`}
         >
-          About
+          Add Car
         </Link>
       </li>
     </>

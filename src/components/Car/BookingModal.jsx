@@ -89,7 +89,7 @@ if (!isAvailable) {
         disabled={!isAvailable}
         className={`w-full py-6 rounded-xl font-bold text-lg transition-all shadow-md ${
           isAvailable
-            ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white cursor-pointer hover:shadow-xl hover:scale-[1.02]"
+            ? "bg-linear-to-r from-blue-600 to-indigo-600 text-white cursor-pointer hover:shadow-xl hover:scale-[1.02]"
             : "bg-slate-200 text-slate-500 disabled:cursor-not-allowed"
         }`}
       >
@@ -114,7 +114,7 @@ if (!isAvailable) {
                     fill
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-5">
                     <h3 className="text-white text-2xl font-bold">
                       {car?.carModel || "Selected Car"}

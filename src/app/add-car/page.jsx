@@ -76,7 +76,7 @@ const onSubmit = async (event) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "authorization": `Bearer ${actualToken}`, 
+          Authorization: `Bearer ${actualToken}`, 
         },
         body: JSON.stringify(carData),
       });
